@@ -34,31 +34,39 @@ export default function Home() {
 
     function toggleOnCamera(){
         return (
-            <Camera>
-                <View>
-                    <Button
-                    onPress={takePic}
-                    />
-                </View>
-            </Camera>
+            <Camera stylesref={cameraRef}>
+             <View>
+                 <Button
+                 title="camera button"
+                 onPress={takePic}
+                 />
+             </View>
+         </Camera>
+            // <Camera>
+            //     <View>
+            //         <Button
+            //         onPress={takePic}
+            //         />
+            //     </View>
+            // </Camera>
         )
     }
 
     return (
-        <Camera stylesref={cameraRef}>
-            <View>
-                <Button
-                title="camera button"
-                onPress={takePic}
-                />
-            </View>
-        </Camera>
-        // <View>
-        //     <Text>PeepeePoopooPeepee</Text>
-        //     <Button 
-        //         title="Use Camera"
-        //         onPress={toggleOnCamera}
-        //     />
-        // </View>
+        // <Camera stylesref={cameraRef}>
+        //     <View>
+        //         <Button
+        //         title="camera button"
+        //         onPress={takePic}
+        //         />
+        //     </View>
+        // </Camera>
+        <View>
+            <Text>PeepeePoopooPeepee</Text>
+            <Button 
+                title="Use Camera"
+                onPress={toggleOnCamera}
+            />
+        </View>
     )
 };
