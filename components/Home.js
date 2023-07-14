@@ -60,5 +60,8 @@ export default function Home() {
         //         onPress={toggleOnCamera}
         //     />
         // </View>
+        <View>
+            <Text>hi</Text>
+        </View>
     )
 };
