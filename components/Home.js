@@ -17,12 +17,48 @@ export default function Home() {
         })();
     }, [])
 
+    if(hasCameraPermissions === undefined){
+        return <Text>Requesting Permissions...</Text>
+    } else if(!hasCameraPermissions){
+        return <Text>Please allow for camera use in settings</Text>
+    }
+
+    let takePic = async () => {
+        let options = {
+            quality: 1,
+            exif: false
+        }
+
+        let newPhoto = await cameraRef.current.takePictureAsync(options)
+    }
+
+    function toggleOnCamera(){
+        return (
+            <Camera>
+                <View>
+                    <Button
+                    onPress={takePic}
+                    />
+                </View>
+            </Camera>
+        )
+    }
+
     return (
-        <View>
-            <Text>PeepeePoopooPeepee</Text>
-            <Button 
-                title="This is a button"
-            />
-        </View>
+        <Camera stylesref={cameraRef}>
+            <View>
+                <Button
+                title="camera button"
+                onPress={takePic}
+                />
+            </View>
+        </Camera>
+        // <View>
+        //     <Text>PeepeePoopooPeepee</Text>
+        //     <Button 
+        //         title="Use Camera"
+        //         onPress={toggleOnCamera}
+        //     />
+        // </View>
     )
 };
