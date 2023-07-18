@@ -1,4 +1,4 @@
-import {View, Text, Button} from 'react-native';
+import {StyleSheet, View, Text, Button, SafeAreaView, Image} from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
@@ -7,6 +7,8 @@ export default function Home() {
     let cameraRef = useRef();
     const [hasCameraPermissions, setHasCameraPermissions] = useState(undefined);
     const [hasMediaLibraryPermissions, setHasMediaLibraryPermissions] = useState(undefined);
+    const [photo, setPhoto] = useState();
+
 
     useEffect(() => {
         (async () => {
@@ -29,8 +31,34 @@ export default function Home() {
             exif: false
         }
 
-        let newPhoto = await cameraRef.current.takePictureAsync(options)
+        let newPhoto = await cameraRef.current.takePictureAsync(options);
+        setPhoto(newPhoto);
     }
+
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+        }
+    })
+
+    if (photo) {
+        let savePhoto = () => {
+          MediaLibrary.saveToLibraryAsync(photo.uri).then(() => {
+            setPhoto(undefined);
+          });
+        };
+    
+        return (
+          <SafeAreaView style={styles.container}>
+            <Image style={styles.preview} source={{ uri: "data:image/jpg;base64," + photo.base64 }} />
+            {hasMediaLibraryPermissions ? <Button title="Save" onPress={savePhoto} /> : undefined}
+            <Button title="Discard" onPress={() => setPhoto(undefined)} />
+          </SafeAreaView>
+        );
+      }
+    
 
     function toggleOnCamera(){
         return (
@@ -45,7 +73,7 @@ export default function Home() {
     }
 
     return (
-        <Camera stylesref={cameraRef}>
+        <Camera style={styles.container} ref={cameraRef}>
             <View>
                 <Button
                 title="camera button"
