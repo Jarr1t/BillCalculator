@@ -1,9 +1,10 @@
 import {StyleSheet, View, Text, Button, SafeAreaView, Image, StatusBar} from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { Camera } from 'expo-camera';
+import Home from './Home'
 import * as MediaLibrary from 'expo-media-library';
 
-export default function Home() {
+export default function Camer({toggleCamera}) {
     let cameraRef = useRef();
     const [hasCameraPermissions, setHasCameraPermissions] = useState(undefined);
     const [hasMediaLibraryPermissions, setHasMediaLibraryPermissions] = useState(undefined);
@@ -33,7 +34,6 @@ export default function Home() {
         }
 
         let newPhoto = await cameraRef.current.takePictureAsync(options);
-        console.log(newPhoto)
         setPhoto(newPhoto);
     }
 
@@ -53,57 +53,35 @@ export default function Home() {
         }
       });
 
+      function cleanUp(){
+        setPhoto(undefined) 
+        toggleCamera()
+      }
+
     if (photo) {
-        console.log('made it here')
         let savePhoto = () => {
           MediaLibrary.saveToLibraryAsync(photo.uri).then(() => {
             setPhoto(undefined);
+            cameraStat.curStatus = false
           });
+          toggleCamera()
         };
     
         return (
           <SafeAreaView style={styles.container}>
             <Image style={styles.preview} source={{ uri: "data:image/jpg;base64," + photo.base64 }} />
             {hasMediaLibraryPermissions ? <Button title="Save" onPress={savePhoto} /> : undefined}
-            <Button title="Discard" onPress={() => setPhoto(undefined)} />
+            <Button title="Discard" onPress={cleanUp} />
           </SafeAreaView>
         );
       }
-    
-
-    // function toggleOnCamera(){
-    //     return (
-    //         <Camera stylesref={cameraRef}>
-    //          <View>
-    //              <Button
-    //              title="camera button"
-    //              onPress={takePic}
-    //              />
-    //          </View>
-    //      </Camera>
-            // <Camera>
-            //     <View>
-            //         <Button
-            //         onPress={takePic}
-            //         />
-            //     </View>
-            // </Camera>
-    //     )
-    // }
 
     return (
-        <Camera style={styles.container} ref={cameraRef}>
+    <Camera style={styles.container} ref={cameraRef}>
         <View style={styles.buttonContainer}>
-          <Button title="Take Pic" onPress={takePic} />
+            <Button title="Take Pic" onPress={takePic} />
         </View>
         <StatusBar style="auto" />
-      </Camera>
-        // <View>
-        //     <Text>PeepeePoopooPeepee</Text>
-        //     <Button 
-        //         title="Use Camera"
-        //         onPress={toggleOnCamera}
-        //     />
-        // </View>
+    </Camera>
     )
 };
