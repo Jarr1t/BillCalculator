@@ -1,6 +1,7 @@
 import {View, Text, Button, StyleSheet} from 'react-native';
 import { useState } from 'react';
 import Camera from './Camera'
+
 export default function Home() {
     const [camera, setCamera] = useState(false);
 
@@ -30,13 +31,5 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-    },
-    buttonContainer: {
-      backgroundColor: '#fff',
-      alignSelf: 'flex-end'
-    },
-    preview: {
-      alignSelf: 'stretch',
-      flex: 1
     }
   });

@@ -1,7 +1,7 @@
 import {StyleSheet, View, Text, Button, SafeAreaView, Image, StatusBar} from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { Camera } from 'expo-camera';
-import Home from './Home'
+
 import * as MediaLibrary from 'expo-media-library';
 
 export default function Camer({toggleCamera}) {
@@ -61,10 +61,8 @@ export default function Camer({toggleCamera}) {
     if (photo) {
         let savePhoto = () => {
           MediaLibrary.saveToLibraryAsync(photo.uri).then(() => {
-            setPhoto(undefined);
-            cameraStat.curStatus = false
+            toggleCamera()
           });
-          toggleCamera()
         };
     
         return (
@@ -80,6 +78,7 @@ export default function Camer({toggleCamera}) {
     <Camera style={styles.container} ref={cameraRef}>
         <View style={styles.buttonContainer}>
             <Button title="Take Pic" onPress={takePic} />
+            <Button title="Close" onPress={cleanUp} />
         </View>
         <StatusBar style="auto" />
     </Camera>
