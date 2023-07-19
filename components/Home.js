@@ -1,4 +1,4 @@
-import {View, Text, Button, StyleSheet} from 'react-native';
+import { StyleSheet, View, Text, Card, Colors, Button} from 'react-native';
 import { useState } from 'react';
 import Camera from './Camera'
 
@@ -16,6 +16,10 @@ export default function Home() {
     return (
     <View style={styles.container}>
         <View>
+                  {/* <Card flex center onPress={() => console.log('pressed')}>
+            <Card.Image source={{uri: 'https://github.com/wix/react-native-ui-lib/blob/master/demo/src/assets/images/card-example.jpg'}}/>
+            </Card> */}
+      {/* <Text $textSuccess text30>Text goes here</Text> */}
             <Text>PeepeePoopooPeepee</Text>
             <Button 
             title="Use Camera"
@@ -33,3 +37,4 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     }
   });
+
