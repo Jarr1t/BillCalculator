@@ -1,6 +1,7 @@
-import {StyleSheet, View, Text, Button, SafeAreaView, Image, StatusBar} from 'react-native';
+import {View, Text, Button, SafeAreaView, Image, StatusBar} from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { Camera } from 'expo-camera';
+import { camStyles } from '../styles/styleSheets'
 
 import * as MediaLibrary from 'expo-media-library';
 
@@ -37,22 +38,6 @@ export default function Camer({toggleCamera}) {
         setPhoto(newPhoto);
     }
 
-    const styles = StyleSheet.create({
-        container: {
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-        buttonContainer: {
-          backgroundColor: '#fff',
-          alignSelf: 'flex-end'
-        },
-        preview: {
-          alignSelf: 'stretch',
-          flex: 1
-        }
-      });
-
       function cleanUp(){
         setPhoto(undefined) 
         toggleCamera()
@@ -66,8 +51,8 @@ export default function Camer({toggleCamera}) {
         };
     
         return (
-          <SafeAreaView style={styles.container}>
-            <Image style={styles.preview} source={{ uri: "data:image/jpg;base64," + photo.base64 }} />
+          <SafeAreaView style={camStyles.container}>
+            <Image style={camStyles.preview} source={{ uri: "data:image/jpg;base64," + photo.base64 }} />
             {hasMediaLibraryPermissions ? <Button title="Save" onPress={savePhoto} /> : undefined}
             <Button title="Discard" onPress={cleanUp} />
           </SafeAreaView>
@@ -75,8 +60,8 @@ export default function Camer({toggleCamera}) {
       }
 
     return (
-    <Camera style={styles.container} ref={cameraRef}>
-        <View style={styles.buttonContainer}>
+    <Camera style={camStyles.container} ref={cameraRef}>
+        <View style={camStyles.buttonContainer}>
             <Button title="Take Pic" onPress={takePic} />
             <Button title="Close" onPress={cleanUp} />
         </View>
