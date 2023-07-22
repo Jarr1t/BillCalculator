@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     height: '60%',
-    // marginTop: 15, // to take into account the phones front camera
     backgroundColor: '#F4F4F4',
   },
 });
