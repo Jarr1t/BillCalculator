@@ -1,0 +1,103 @@
+{
+    "orders": [
+      {
+        "id": 1,
+        "name": "Bacon Cheese Burger",
+        "add_ons": "extra bacon",
+        "price": 14.99
+      },
+      {
+        "id": 2,
+        "name": "Shrimp Plate",
+        "add_ons": "",
+        "price": 19.99
+      },
+      {
+        "id": 3,
+        "name": "Moscow Mule",
+        "add_ons": "",
+        "price": 11
+      },
+      {
+        "id": 4,
+        "name": "Mojito",
+        "add_ons": "",
+        "price": 11
+      },
+      {
+        "id": 5,
+        "name": "Coke",
+        "add_ons": "",
+        "price": 4
+      },
+      {
+        "id": 6,
+        "name": "Fries",
+        "add_ons": "",
+        "price": 7
+      },
+      {
+        "id": 7,
+        "name": "Chicken Alfredo",
+        "add_ons": "",
+        "price": 11
+      },
+      {
+        "id": 8,
+        "name": "Shrimp Alfredo",
+        "add_ons": "",
+        "price": 13
+      },{
+        "id": 9,
+        "name": "Cheese Fries",
+        "add_ons": "",
+        "price": 8
+      },
+      {
+        "id": 10,
+        "name": "Mojito",
+        "add_ons": "",
+        "price": 7
+      },
+      {
+        "id": 11,
+        "name": "Empanadas",
+        "add_ons": "",
+        "price": 8
+      },
+      {
+        "id": 12,
+        "name": "Chicken Alfredo",
+        "add_ons": "",
+        "price": 11
+      },
+      {
+        "id": 13,
+        "name": "Pie",
+        "add_ons": "",
+        "price": 5
+      }
+    ],
+    "group_members": [
+      {
+        "id": 1,
+        "name": "Anne"
+      },
+      {
+        "id": 2,
+        "name": "Anthony"
+      },
+      {
+        "id": 3,
+        "name": "Ricardo"
+      },
+      {
+        "id": 2,
+        "name": "Ebony"
+      },
+      {
+        "id": 2,
+        "name": "Jarrit"
+      }
+    ]
+  }
