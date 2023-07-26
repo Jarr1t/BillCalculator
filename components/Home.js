@@ -2,11 +2,13 @@ import { StyleSheet, View, Text, Card, Colors, Button} from 'react-native';
 import { useState } from 'react';
 import Camera from './Camera'
 
-export default function Home() {
-    const [camera, setCamera] = useState(false);
+export default function Home({ navigation }) {
+  const [camera, setCamera] = useState(false);
+  const [cameraUsed, setUsed] = useState(false);
 
     function toggleCamera(){
         setCamera(!camera)
+        setUsed(true)
     }
 
     if(camera){
@@ -25,6 +27,7 @@ export default function Home() {
             title="Use Camera"
             onPress={() => toggleCamera()}
             />
+            {cameraUsed ? <Button title="Results" onPress={() => navigation.navigate("Results")}/> : undefined }
         </View>
     </View>
     )
