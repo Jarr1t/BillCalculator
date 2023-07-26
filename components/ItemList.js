@@ -10,13 +10,13 @@ import {
 import data from '../data.json';
 
 export default function ItemList() {
-  const [selectedId, setSelectedId] = useState();
+  // const [selectedId, setSelectedId] = useState();
   function renderData(order) {
     return (
       <View style={styles.itemContainer}>
         <ListItem
           style={styles.item}
-          onPress={() => { setSelectedId(order.id); console.log('hi'); }}
+          onPress={() => { console.log('hi'); }}
         >
           <ListItem.Part>
             <Text text70BO>
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     width: '90%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    height: '60%',
+    height: '55%',
     backgroundColor: '#F4F4F4',
   },
 });
