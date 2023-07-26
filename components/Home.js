@@ -1,6 +1,9 @@
-import { StyleSheet, View, Text, Card, Colors, Button} from 'react-native';
+import { StyleSheet, View, Text, Card, Colors, SafeAreaView, Image } from 'react-native';
 import { useState } from 'react';
+import { Button } from 'react-native-ui-lib'
 import Camera from './Camera'
+const myImage = require("../assets/homeDrawing.png");
+import { homeStyles } from '../styles/styleSheets'
 
 export default function Home({ navigation }) {
   const [camera, setCamera] = useState(false);
@@ -16,28 +19,23 @@ export default function Home({ navigation }) {
     }
 
     return (
-    <View style={styles.container}>
+    <SafeAreaView style={homeStyles.container}>
         <View>
-                  {/* <Card flex center onPress={() => console.log('pressed')}>
-            <Card.Image source={{uri: 'https://github.com/wix/react-native-ui-lib/blob/master/demo/src/assets/images/card-example.jpg'}}/>
-            </Card> */}
-      {/* <Text $textSuccess text30>Text goes here</Text> */}
-            <Text>PeepeePoopooPeepee</Text>
-            <Button 
-            title="Use Camera"
-            onPress={() => toggleCamera()}
+            <Image source={myImage}
+                style={homeStyles.responsiveImage} />
+            
+            <Text style={homeStyles.welcomeText}>Hey! Welcome</Text>
+            <Text style={homeStyles.secondaryWelcomeText}>Get started by taking a picture of your reciept</Text>
+            <Button
+                title="Use Camera"
+                onPress={() => toggleCamera()}
+                style={homeStyles.button}
+                label="Snap Reciept"
+                labelStyle={homeStyles.buttonLabel}
+                enableShadown="true"
             />
             {cameraUsed ? <Button title="Results" onPress={() => navigation.navigate("Results")}/> : undefined }
         </View>
-    </View>
+    </SafeAreaView>
     )
 };
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
-
